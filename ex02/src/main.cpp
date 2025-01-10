@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:47:55 by okrahl            #+#    #+#             */
-/*   Updated: 2024/12/12 14:25:49 by okrahl           ###   ########.fr       */
+/*   Updated: 2025/01/10 14:58:16 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ int main() {
 	strings[0] = "Hello";
 	strings[1] = "World";
 	strings[2] = "!";
+
+	Array<int> arrInt(3);
+	for (int i = 0; i < 3; i++)
+		arrInt[i] = i + 1;
+	const Array<int> arrIntConst(arrInt);
+	for (int i = 0; i < 3; i++)
+		std::cout << arrIntConst[i] << std::endl;
 
 	std::cout << "String array: ";
 	for (unsigned int i = 0; i < strings.size(); i++) {

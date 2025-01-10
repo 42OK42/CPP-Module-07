@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/12 14:41:23 by okrahl            #+#    #+#             */
+/*   Updated: 2025/01/10 15:20:26 by okrahl           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
@@ -8,15 +20,18 @@ template<typename T>
 class Array {
 private:
 	T* _array;
-	unsigned int _size;
+	size_t _size;
 
 public:
 	// Default constructor
 	Array() : _array(NULL), _size(0) {}
 
 	// Constructor with size parameter
-	Array(unsigned int n) : _size(n) {
-		_array = new T[n]();
+	Array(int n) {
+		if (n < 0)
+			throw std::invalid_argument("Array size cannot be negative");
+		_size = static_cast<size_t>(n);
+		_array = new T[_size]();
 	}
 
 	// Copy constructor
@@ -46,15 +61,20 @@ public:
 	}
 
 	// Subscript operator
-	T& operator[](unsigned int index) {
-		if (index >= _size) {
-			throw std::exception();
-		}
+	T& operator[](int index) {
+		if (index < 0 || static_cast<size_t>(index) >= _size)
+			throw std::out_of_range("Index out of bounds");
+		return _array[index];
+	}
+
+	const T& operator[](int index) const {
+		if (index < 0 || static_cast<size_t>(index) >= _size)
+			throw std::out_of_range("Index out of bounds");
 		return _array[index];
 	}
 
 	// Size getter
-	unsigned int size() const {
+	size_t size() const {
 		return _size;
 	}
 };

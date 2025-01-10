@@ -6,7 +6,7 @@
 #    By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 15:19:54 by okrahl            #+#    #+#              #
-#    Updated: 2024/12/12 14:41:31 by okrahl           ###   ########.fr        #
+#    Updated: 2024/12/10 16:48:50 by okrahl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ_DIR = obj
 INCLUDE_DIR = incl
 
 # Target
-TARGET = array
+TARGET = iter
 
 # Source and object files
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
